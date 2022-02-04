@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="shortcut icon" href="cryptography.png" />
+
+    <title>cryptography</title>
+</head>
+
+<body>
+
+
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"> <img src="cryptography.png" alt="" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                cryptography Cipher Tool
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Playfair.html">Playfair cipher</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Rail.html">Rail Fence Cipher</a>
+
+                    </li>
+
+
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="my-1 text-center">
+        <h1 class="display-4 fw-bold">Playfair cipher decoder and encoder
+        </h1>
+
+    </div>
+    </div>
+
+
+    <main style="flex: 1;">
+
+
+
+
+
+
+        <section class="section3">
+            <div class="container">
+
+
+                <div class="jumbotron">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-dark active">
+                            <input type="radio" name="options" id="encryptbtn" autocomplete="off"
+                                onchange="updateTexts();" checked> Encrypt
+                        </label>
+                        <label class="btn btn-dark">
+                            <input type="radio" name="options" id="decryptbtn" autocomplete="off"
+                                onchange="updateTexts();"> Decrypt
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control text-monospace" rows="4" id="srctext" oninput="updateTexts();"
+                            spellcheck="false" placeholder="Type here..."></textarea>
+                        <button class="btn btn-success mt-1" onclick="clearText();">Clear</button>
+                        <button class="btn btn-success mt-1" data-toggle="collapse" data-target="#options"
+                            aria-expanded="false" aria-controls="options">Options</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="encryptionkey" class="h4">Encryption key</label>
+                        <input class="form-control" id="encryptionkey" type="text" style="max-width: 30em;"
+                            oninput="updateTexts()" value="PLAYFAIR" placeholder="Enter key here (only letters)" />
+                    </div>
+
+                    <label for="plaintext" class="h3" id="resultlabel">Result</label>
+                    <textarea class="form-control text-monospace" rows="3" id="resulttext" spellcheck="false"
+                        readonly></textarea>
+
+
+
+                    <div id="options" class="form-group collapse">
+                        <p>
+                            Translate this letter
+                            <select id="translatefrom" style="max-width: 5em;" oninput="updateTexts()">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                                <option value="I">I</option>
+                                <option value="J" selected>J</option>
+                                <option value="K">K</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="N">N</option>
+                                <option value="O">O</option>
+                                <option value="P">P</option>
+                                <option value="Q">Q</option>
+                                <option value="R">R</option>
+                                <option value="S">S</option>
+                                <option value="T">T</option>
+                                <option value="U">U</option>
+                                <option value="V">V</option>
+                                <option value="W">W</option>
+                                <option value="X">X</option>
+                                <option value="Y">Y</option>
+                                <option value="Z">Z</option>
+                            </select>
+                            into
+                            <select id="translateto" style="max-width: 5em;" oninput="updateTexts()">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                                <option value="I" selected>I</option>
+                                <option value="J">J</option>
+                                <option value="K">K</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="N">N</option>
+                                <option value="O">O</option>
+                                <option value="P">P</option>
+                                <option value="Q">Q</option>
+                                <option value="R">R</option>
+                                <option value="S">S</option>
+                                <option value="T">T</option>
+                                <option value="U">U</option>
+                                <option value="V">V</option>
+                                <option value="W">W</option>
+                                <option value="X">X</option>
+                                <option value="Y">Y</option>
+                                <option value="Z">Z</option>
+                            </select>
+                        </p>
+                        <p>
+                            Padding/filler character
+                            <select id="padcharacter" style="max-width: 5em;" oninput="updateTexts()">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                                <option value="I">I</option>
+                                <option value="J">J</option>
+                                <option value="K">K</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="N">N</option>
+                                <option value="O">O</option>
+                                <option value="P">P</option>
+                                <option value="Q">Q</option>
+                                <option value="R">R</option>
+                                <option value="S">S</option>
+                                <option value="T">T</option>
+                                <option value="U">U</option>
+                                <option value="V">V</option>
+                                <option value="W">W</option>
+                                <option value="X" selected>X</option>
+                                <option value="Y">Y</option>
+                                <option value="Z">Z</option>
+                            </select>
+                        </p>
+                        <p>
+                            Pad double-letters?
+                            <select id="paddouble" style="max-width: 27em;" oninput="updateTexts()">
+                                <option value="yes" selected>Yes (original Playfair mode)</option>
+                                <option value="no">No</option>
+                            </select>
+                        </p>
+
+                        <h4>Translation grid</h4>
+                        <p id="translationtable" class="text-monospace"></p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+
+
+
+    </main>
+
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2022 Cryptography Cipher Tool </p>
+        <p class="text-center text-muted">Made by Krish with ❤️</p>
+    </footer>
+
+
+    <script src="/playfair.js"></script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
